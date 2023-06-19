@@ -1,13 +1,20 @@
 import "./App.css";
 
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+
+import { Men } from "./pages/Men";
+import { Nav } from "./layout/nav/Nav";
+import Home from "./pages/Home/Home";
+
 function App() {
   return (
-    <>
-      <h1>Vite + React</h1>
-      <p className="bg-black">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
+    <BrowserRouter>
+      <Nav />
+      <Routes>
+        <Route path="/" Component={Home} />
+        <Route path="men" Component={Men} />
+      </Routes>
+    </BrowserRouter>
   );
 }
 
