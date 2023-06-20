@@ -2,7 +2,7 @@ import "./nav.css";
 export const Nav = () => {
   return (
     <>
-      <div className="h-20 border-b-2 flex">
+      <div className="h-20 border-b-2 flex mb-24 fixed bg-white z-40 w-full  ">
         <div className="flex justify-center items-center mx-10 ">
           <a href="/">
             <span className="font-bold text-3xl ">STORE</span>

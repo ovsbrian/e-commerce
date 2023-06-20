@@ -8,7 +8,6 @@ export const useYourProducts = () => {
       .then((response) => response.json())
       .then((data) => setProducts(data.products));
   }, []);
-  console.log(products);
   return products;
 };
 export default useYourProducts;

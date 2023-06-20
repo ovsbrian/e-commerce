@@ -11,7 +11,10 @@ export const ProductsDiscount = () => {
   const viewArray = [...discountedProducts, ...discountedProducts];
   return (
     <>
-      <div className="flex mt-8 select-none px-24  ">
+      <div className=" select-none px-24 mb-10">
+        <div className="flex items-center m-10">
+          <span className="text-4xl font-semibold">Bests Discount</span>
+        </div>
         <Swiper
           slidesPerView={3}
           spaceBetween={30}
@@ -36,16 +39,28 @@ export const ProductsDiscount = () => {
             return (
               <SwiperSlide key={`${product.id}-${index}`}>
                 <div
-                  className={`w-full flex justify-center items-center flex-col `}
+                  className={`w-full flex justify-center items-center flex-col cursor-pointer `}
                 >
-                  <img
-                    src={product.imageURL}
-                    alt={product.name}
-                    className="rounded-3xl"
-                  />
-                  <h2>{product.name}</h2>
-                  <p>Antes: {product.price}</p>
-                  <p>Ahora: {finalPrice}</p>
+                  <div className="relative">
+                    <img
+                      src={product.imageURL}
+                      alt={product.name}
+                      className="rounded-3xl"
+                    />
+                    <span className="absolute top-5 left-5 bg-white rounded-full p-5 text-3xl font-semibold text-red-700">
+                      % {product.discount}
+                    </span>
+                    <div className="absolute top-2 right-5  rounded-sm p-5 text-3xl font-semibold text-red-700 flex flex-col items-center">
+                      <span className="text-xl line-through">
+                        before: $ {product.price}
+                      </span>
+                      <span>NOW: $ {finalPrice}</span>
+                    </div>
+
+                    <div className="absolute bottom-0 left-0 p-2 flex flex-col justify-center items-center w-full ">
+                      <h2 className="text-2xl font-semibold">{product.name}</h2>
+                    </div>
+                  </div>
                 </div>
               </SwiperSlide>
             );
