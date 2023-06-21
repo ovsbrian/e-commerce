@@ -7,11 +7,11 @@ export const Sections = () => {
     <>
       <div className="w-full h-custom grid grid-rows-3 grid-flow-col gap-4">
         <div
-          className="row-span-3 col-span-2 bg-slate-600 bg-cover bg-center flex justify-center items-end relative overflow-hidden"
+          className="row-span-3 col-span-2 bg-slate-600 bg-cover bg-center flex justify-center items-end relative overflow-hidden cursor-pointer"
           style={{ backgroundImage: `url(${img1})` }}
         >
           <div
-            className="absolute inset-0 transition duration-500 ease-in-out transform hover:scale-110"
+            className="absolute inset-0 transition duration-500 ease-in-out transform hover:scale-110  "
             style={{
               backgroundImage: `url(${img1})`,
               backgroundSize: "cover",
@@ -23,11 +23,11 @@ export const Sections = () => {
           </div>
         </div>
         <div
-          className="row-span-2 col-span-1 bg-slate-700 bg-cover bg-center flex justify-center items-end relative overflow-hidden"
+          className="row-span-2 col-span-1 bg-slate-700 bg-cover bg-center flex justify-center items-end relative overflow-hidden cursor-pointer"
           style={{ backgroundImage: `url(${img1})` }}
         >
           <div
-            className="absolute inset-0 transition duration-500 ease-in-out transform hover:scale-110"
+            className="absolute inset-0 transition duration-500 ease-in-out transform hover:scale-110 "
             style={{
               backgroundImage: `url(${img1})`,
               backgroundSize: "cover",
@@ -39,11 +39,11 @@ export const Sections = () => {
           </div>
         </div>
         <div
-          className="col-span-1 bg-slate-700 bg-cover bg-center flex justify-center items-end relative overflow-hidden"
+          className="col-span-1 bg-slate-700 bg-cover bg-center flex justify-center items-end relative overflow-hidden cursor-pointer"
           style={{ backgroundImage: `url(${img1})` }}
         >
           <div
-            className="absolute inset-0 transition duration-500 ease-in-out transform hover:scale-110"
+            className="absolute inset-0 transition duration-500 ease-in-out transform hover:scale-110 "
             style={{
               backgroundImage: `url(${img1})`,
               backgroundSize: "cover",
@@ -55,11 +55,11 @@ export const Sections = () => {
           </div>
         </div>
         <div
-          className="row-span-3 col-span-1 bg-slate-400 bg-cover bg-center flex justify-center items-end relative overflow-hidden"
+          className="row-span-3 col-span-1 bg-slate-400 bg-cover bg-center flex justify-center items-end relative overflow-hidden cursor-pointer"
           style={{ backgroundImage: `url(${img1})` }}
         >
           <div
-            className="absolute inset-0 transition duration-500 ease-in-out transform hover:scale-110"
+            className="absolute inset-0 transition duration-500 ease-in-out transform hover:scale-110  "
             style={{
               backgroundImage: `url(${img1})`,
               backgroundSize: "cover",
