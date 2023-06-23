@@ -6,6 +6,7 @@ import { Men } from "./pages/Men";
 import { Nav } from "./layout/nav/Nav";
 import Home from "./pages/Home/Home";
 import { Footer } from "./layout/nav/Footer";
+import { Collections } from "./pages/Collection/Collections";
 
 function App() {
   return (
@@ -13,6 +14,7 @@ function App() {
       <Nav />
       <Routes>
         <Route path="/" Component={Home} />
+        <Route path="collections" Component={Collections} />
         <Route path="men" Component={Men} />
       </Routes>
       <Footer />

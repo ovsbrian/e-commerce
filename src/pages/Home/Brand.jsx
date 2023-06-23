@@ -10,15 +10,15 @@ export const Brand = () => {
   return (
     <>
       <div className="px-24  flex">
-        <div className="grid grid-cols-2 gap-4 row-span-3 p-4   ">
-          <div className="  flex items-center overflow-hidden   cursor-pointer">
+        <div className="grid grid-cols-2 gap-4 row-span-3 p-4">
+          <div className="  flex items-center overflow-hidden cursor-pointer">
             <img
               src={img1}
               alt="Imagen chica 1"
               className="  inset-0 transition duration-500 ease-in-out transform hover:scale-105"
             />
           </div>
-          <div className="flex items-center overflow-hidden p-2  cursor-pointer">
+          <div className="flex items-center overflow-hidden p-2 cursor-pointer">
             <img
               src={nike}
               alt="Imagen chica 2"
