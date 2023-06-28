@@ -1,4 +1,4 @@
-import { useState } from "react";
+ 
 import {
   Accordion,
   AccordionHeader,
@@ -12,6 +12,8 @@ import {
   Typography,
 } from "@material-tailwind/react";
 import "./ContainerFilter.css";
+import PropTypes from 'prop-types';
+import { useState, useCallback } from 'react';
 
 function Icon({ open }) {
   return (
@@ -30,40 +32,57 @@ function Icon({ open }) {
   );
 }
 
-export const ContainerFilter = () => {
-  // Arreglo de objetos con el nombre y el contenido de cada categoría
+export const ContainerFilter = ({ onFilterChange }) => {
   const categories = [
     {
       name: "Género",
-      content: ["Hombre", "Mujer"],
+      content: ["MEN", "WOMEN", "KIDS"],
     },
     {
       name: "Talles",
-      content: ["-35", "35-40", "40-45"],
+      content: ["-35", "35-38", "38-42", "42+"],
     },
     {
       name: "Tipo",
-      content: ["Deportivo", "Casual", "Elegante", "Football"],
+      content: ["RUNNING", "CASUAL", "FORMAL", "FOOTBALL"],
     },
   ];
 
-  // Arreglo de estados para controlar la visibilidad de cada categoría
   const [isActive, setIsActive] = useState(
     new Array(categories.length).fill(false)
   );
+  const [selectedGender, setSelectedGender] = useState("");
+  const [selectedSizeRange, setSelectedSizeRange] = useState("");
+  const [selectedCategory, setSelectedCategory] = useState("");
 
-  // Función para cambiar el estado de una categoría
-  const handleIsActive = (index) => {
-    console.log("handleIsActive called with index:", index);
+  const handleIsActive = useCallback((index) => {
     const newIsActive = [...isActive];
     newIsActive[index] = !newIsActive[index];
     setIsActive(newIsActive);
-  };
+  }, [isActive]);
+
+  const handleSelectedFilter = useCallback((filterName, value) => {
+    switch (filterName) {
+      case 'Género':
+        setSelectedGender(value);
+        onFilterChange({ selectedGender: value, selectedSizeRange, selectedCategory });
+        break;
+      case 'Talles':
+        setSelectedSizeRange(value);
+        onFilterChange({ selectedGender, selectedSizeRange: value, selectedCategory });
+        break;
+      case 'Tipo':
+        setSelectedCategory(value);
+        onFilterChange({ selectedGender, selectedSizeRange, selectedCategory: value });
+        break;
+      default:
+        break;
+    }
+  }, [onFilterChange, selectedCategory, selectedGender, selectedSizeRange]);
 
   return (
     <>
-      <div className=" p-4 w-56 rounded flex flex-col gap-4">
-        {/* Usar el método map para renderizar cada filtro y su contenido */}
+      <div className="p-4 w-56 rounded flex flex-col gap-4">
         {categories.map((category, index) => (
           <div key={index}>
             <Accordion
@@ -73,35 +92,45 @@ export const ContainerFilter = () => {
               <AccordionHeader onClick={() => handleIsActive(index)}>
                 {category.name}
               </AccordionHeader>
-              <AccordionBody>
-                {category.content.map((option) => (
-                  <div className="text-base " key={option}>
-                    <List>
-                      <ListItem className="p-0" key={option}>
-                        <label
-                          htmlFor={`vertical-list-${option}`}
-                          className=" flex items-center w-full cursor-pointer"
-                        >
-                          <ListItemPrefix className="mr-3">
-                            <Radio
-                              name={`vertical-list-${category.name}`}
-                              id={`vertical-list-${category.name}-${option}`}
-                              ripple={false}
-                              className="hover:before:opacity-0"
-                              containerProps={{
-                                className: "p-0",
-                              }}
-                            />
-                          </ListItemPrefix>
-                          <Typography color="blue-gray" className="font-medium">
-                            {option}
-                          </Typography>
-                        </label>
-                      </ListItem>
-                    </List>
-                  </div>
-                ))}
-              </AccordionBody>
+              {isActive[index] && (
+                <AccordionBody>
+                  {category.content.map((option) => (
+                    <div className="text-base" key={option}>
+                      <List>
+                        <ListItem className="p-0" key={option}>
+                          <label
+                            htmlFor={`vertical-list-${option}`}
+                            className="flex items-center w-full cursor-pointer"
+                          >
+                            <ListItemPrefix className="mr-3">
+                              <Radio
+                                name={`vertical-list-${category.name}`}
+                                id={`vertical-list-${category.name}-${option}`}
+                                ripple={false}
+                                className="hover:before:opacity-0"
+                                containerProps={{
+                                  className: "p-0",
+                                }}
+                                checked={
+                                  category.name === "Género"
+                                    ? selectedGender === option
+                                    : category.name === "Talles"
+                                    ? selectedSizeRange === option
+                                    : category.name === "Tipo"
+                                    ? selectedCategory === option
+                                    : false
+                                }
+                                onChange={() => handleSelectedFilter(category.name, option)}
+                              />
+                            </ListItemPrefix>
+                            <Typography variant="body2">{option}</Typography>
+                          </label>
+                        </ListItem>
+                      </List>
+                    </div>
+                  ))}
+                </AccordionBody>
+              )}
             </Accordion>
           </div>
         ))}
@@ -109,3 +138,12 @@ export const ContainerFilter = () => {
     </>
   );
 };
+
+
+Icon.propTypes = {
+  open: PropTypes.bool.isRequired,
+
+};
+
+
+ContainerFilter.propTypes = {  onFilterChange: PropTypes.func.isRequired,};
