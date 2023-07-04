@@ -1,15 +1,24 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { DirectionOrder } from "../../componentes/DirectionOrder";
 import useYourProducts from "../../utils/Hooks";
 import { CartProduct } from "./CartProduct";
 import { ContainerFilter } from "./ContainerFilter";
-import { NoResults } from './NoResults'; // Importar el componente NoResults
+import { NoResults } from './NoResults';
 
+import '../../utils/spinners.css'
 export const Collections = () => {
   const products = useYourProducts();
-  // Establecer el estado inicial de filteredProducts igual a la lista de productos
-  const [filteredProducts, setFilteredProducts] = useState(products);
-  console.log('Lista de productos:', products);
+  const [isLoading, setIsLoading] = useState(true);
+  const [filteredProducts, setFilteredProducts] = useState([]);
+  const [showNoResults, setShowNoResults] = useState(false); // Nueva variable de estado
+
+  useEffect(() => {
+    if (products) {
+      setFilteredProducts(products);
+      setIsLoading(false);
+    }
+  }, [products]);
+
   const handleFilterChange = ({ selectedGender, selectedSizeRange, selectedCategory }) => {
     // Realizar la lógica de filtrado aquí utilizando los valores seleccionados
     const filtered = products.filter((product) => {
@@ -38,6 +47,13 @@ export const Collections = () => {
     });
 
     setFilteredProducts(filtered);
+
+    // Actualizar showNoResults según sea necesario
+    if (filtered.length === 0) {
+      setShowNoResults(true);
+    } else {
+      setShowNoResults(false);
+    }
   };
 
   return (
@@ -47,7 +63,16 @@ export const Collections = () => {
         <div className="flex">
           <ContainerFilter onFilterChange={handleFilterChange} />
           <div className="grid grid-cols-3 gap-6 w-full h-full">
-            {filteredProducts.length > 0 ? (
+            {isLoading ? (
+           <div className="flex justify-center items-center w-full col-span-3">
+            <span className="loader"></span>
+            </div>
+            ) : showNoResults ? (
+              // Mostrar el componente NoResults si showNoResults es verdadero
+              <div className="col-span-3">
+                <NoResults />
+              </div>
+            ) : (
               filteredProducts.map((product) => (
                 <CartProduct
                   key={product.id}
@@ -56,12 +81,6 @@ export const Collections = () => {
                   img={product.imageURL}
                 />
               ))
-            ) : (
-              // Mostrar el componente NoResults si no hay resultados
-              // Asegurarse de que el componente ocupe todas las columnas de la cuadrícula
-              <div className="col-span-3">
-                <NoResults />
-              </div>
             )}
           </div>
         </div>
