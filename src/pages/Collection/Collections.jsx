@@ -4,13 +4,16 @@ import useYourProducts from "../../utils/Hooks";
 import { CartProduct } from "./CartProduct";
 import { ContainerFilter } from "./ContainerFilter";
 import { NoResults } from './NoResults';
+import { FilterTag } from "./FilterTag";
 
 import '../../utils/spinners.css'
+
 export const Collections = () => {
   const products = useYourProducts();
   const [isLoading, setIsLoading] = useState(true);
   const [filteredProducts, setFilteredProducts] = useState([]);
-  const [showNoResults, setShowNoResults] = useState(false); // Nueva variable de estado
+  const [showNoResults, setShowNoResults] = useState(false);
+  const [appliedFilters, setAppliedFilters] = useState([]);
 
   useEffect(() => {
     if (products) {
@@ -47,13 +50,44 @@ export const Collections = () => {
     });
 
     setFilteredProducts(filtered);
+    setShowNoResults(filtered.length === 0);
 
-    // Actualizar showNoResults según sea necesario
-    if (filtered.length === 0) {
-      setShowNoResults(true);
-    } else {
-      setShowNoResults(false);
+    // Actualizar los filtros aplicados
+    const newFilters = [];
+    if (selectedGender) {
+      newFilters.push({ name: "Gender", value: selectedGender });
     }
+    if (selectedSizeRange) {
+      newFilters.push({ name: "Size", value: selectedSizeRange });
+    }
+    if (selectedCategory) {
+      newFilters.push({ name: "Category", value: selectedCategory });
+    }
+    setAppliedFilters(newFilters);
+  };
+
+  const removeFilter = (name) => {
+    const newFilters = appliedFilters.filter((filter) => filter.name !== name);
+    setAppliedFilters(newFilters);
+
+    // Refiltrar los productos según los filtros restantes
+    let selectedGender = null;
+    let selectedSizeRange = null;
+    let selectedCategory = null;
+
+    for (const filter of newFilters) {
+      if (filter.name === "Gender") {
+        selectedGender = filter.value;
+      }
+      if (filter.name === "Size") {
+        selectedSizeRange = filter.value;
+      }
+      if (filter.name === "Category") {
+        selectedCategory = filter.value;
+      }
+    }
+
+    handleFilterChange({ selectedGender, selectedSizeRange, selectedCategory });
   };
 
   return (
@@ -64,27 +98,38 @@ export const Collections = () => {
           <ContainerFilter onFilterChange={handleFilterChange} />
           <div className="grid grid-cols-3 gap-6 w-full h-full">
             {isLoading ? (
-           <div className="flex justify-center items-center w-full col-span-3">
-            <span className="loader"></span>
-            </div>
+              <div className="flex justify-center items-center w-full col-span-3">
+                <span className="loader"></span>
+              </div>
             ) : showNoResults ? (
-              // Mostrar el componente NoResults si showNoResults es verdadero
               <div className="col-span-3">
                 <NoResults />
               </div>
             ) : (
-              filteredProducts.map((product) => (
-                <CartProduct
-                  key={product.id}
-                  nombre={product.name}
-                  precio={product.price}
-                  img={product.imageURL}
-                />
-              ))
+              <>
+                <div className="col-span-3 flex flex-wrap">
+                  {appliedFilters.map((filter) => (
+                    <FilterTag
+                      key={filter.name}
+                      name={filter.name}
+                      value={filter.value}
+                      onRemove={removeFilter}
+                    />
+                  ))}
+                </div>
+                {filteredProducts.map((product) => (
+                  <CartProduct
+                    key={product.id}
+                    nombre={product.name}
+                    precio={product.price}
+                    img={product.imageURL}
+                  />
+                ))}
+              </>
             )}
           </div>
         </div>
       </div>
     </>
   );
-};
+}

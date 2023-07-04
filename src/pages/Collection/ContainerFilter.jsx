@@ -1,36 +1,9 @@
- 
-import {
-  Accordion,
-  AccordionHeader,
-  AccordionBody,
-} from "@material-tailwind/react";
-import {
-  Radio,
-  List,
-  ListItem,
-  ListItemPrefix,
-  Typography,
-} from "@material-tailwind/react";
-import "./ContainerFilter.css";
-import PropTypes from 'prop-types';
 import { useState, useCallback } from 'react';
+import { Accordion, AccordionHeader, AccordionBody } from "@material-tailwind/react";
+import { Radio, List, ListItem, ListItemPrefix, Typography } from "@material-tailwind/react";
+import PropTypes from 'prop-types';
 
-function Icon({ open }) {
-  return (
-    <svg
-      xmlns="http://www.w3.org/2000/svg"
-      className={`${
-        open === true ? "rotate-180" : ""
-      } h-5 w-5 transition-transform`}
-      fill="none"
-      viewBox="0 0 24 24"
-      stroke="currentColor"
-      strokeWidth={2}
-    >
-      <path strokeLinecap="round" strokeLinejoin="round" d="M19 9l-7 7-7-7" />
-    </svg>
-  );
-}
+import Icon from "./Icon";
 
 export const ContainerFilter = ({ onFilterChange }) => {
   const categories = [
@@ -99,8 +72,8 @@ export const ContainerFilter = ({ onFilterChange }) => {
                       <List>
                         <ListItem className="p-0" key={option}>
                           <label
-                            htmlFor={`vertical-list-${option}`}
                             className="flex items-center w-full cursor-pointer"
+                            onClick={() => handleSelectedFilter(category.name, option)}
                           >
                             <ListItemPrefix className="mr-3">
                               <Radio
@@ -120,7 +93,7 @@ export const ContainerFilter = ({ onFilterChange }) => {
                                     ? selectedCategory === option
                                     : false
                                 }
-                                onChange={() => handleSelectedFilter(category.name, option)}
+                                onChange={() => {}}
                               />
                             </ListItemPrefix>
                             <Typography variant="body2">{option}</Typography>
@@ -139,11 +112,6 @@ export const ContainerFilter = ({ onFilterChange }) => {
   );
 };
 
-
-Icon.propTypes = {
-  open: PropTypes.bool.isRequired,
-
+ContainerFilter.propTypes = {
+  onFilterChange: PropTypes.func.isRequired,
 };
-
-
-ContainerFilter.propTypes = {  onFilterChange: PropTypes.func.isRequired,};
