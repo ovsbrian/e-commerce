@@ -120,6 +120,7 @@ export const Collections = () => {
                 {filteredProducts.map((product) => (
                   <CartProduct
                     key={product.id}
+                    id={product.id}
                     nombre={product.name}
                     precio={product.price}
                     img={product.imageURL}

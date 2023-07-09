@@ -1,6 +1,6 @@
+import { Link } from 'react-router-dom';
 
-
-export const CartProduct = ({img, nombre,precio}) =>{
+export const CartProduct = ({img, nombre,precio, id}) =>{
       // Limitar el nombre a un número máximo de palabras
   const MAX_WORDS = 4; // Cambia este valor según tus necesidades
 
@@ -18,6 +18,7 @@ export const CartProduct = ({img, nombre,precio}) =>{
     return(
     <>
     <div className="w-80 h-80   my-4 transition-transform transform hover:scale-105 hover:cursor-pointer hover:z-20">
+    <Link to={`/product/${id}`}>
         <div className=" mb-4 p-2 w-full h-60 flex justify-center items-center">
             <img className="h-72" src={img} alt="IMAGEN" />
         </div>
@@ -25,6 +26,7 @@ export const CartProduct = ({img, nombre,precio}) =>{
             <span className="text-xl m-2">${precio}</span>
             <span className="opacity-60 mx-2">{nombreTruncado}</span>
         </div>
+        </Link>
     </div>
     </>
     )
@@ -32,6 +34,7 @@ export const CartProduct = ({img, nombre,precio}) =>{
 
 
 import PropTypes from 'prop-types';
+ 
 
 CartProduct.propTypes = {
   img: PropTypes.string.isRequired,

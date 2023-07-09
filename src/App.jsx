@@ -7,6 +7,7 @@ import { Nav } from "./layout/nav/Nav";
 import Home from "./pages/Home/Home";
 import { Footer } from "./layout/nav/Footer";
 import { Collections } from "./pages/Collection/Collections";
+import { PageProduct } from "./pages/PagesProducts/ProductPage";
 
 function App() {
   return (
@@ -16,6 +17,7 @@ function App() {
         <Route path="/" Component={Home} />
         <Route path="collections" Component={Collections} />
         <Route path="men" Component={Men} />
+        <Route path="/product/:id" element={<PageProduct />} />
       </Routes>
       <Footer />
     </BrowserRouter>
