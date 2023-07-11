@@ -1,13 +1,17 @@
-import { useState } from 'react';
+import { useState, useContext } from 'react';
 import { useParams } from 'react-router-dom';
 import { useProduct } from '../../utils/Hooks';
 import { Minus, Plus, ShoppingCart } from 'lucide-react';
 import { discountProduct } from '../../utils/functions';
+ 
+import { CartContext } from '../Cart/ContextCart';
+  // Importa el contexto del carrito de compras
 
 export const PageProduct = () => {
   const { id } = useParams();
   const product = useProduct(id);
   const [count, setCount] = useState(1);
+  const { dispatch } = useContext(CartContext); // Utiliza el Hook useContext para acceder al contexto del carrito de compras
 
   const handleIncrement = () => {
     setCount(count + 1);
@@ -17,6 +21,11 @@ export const PageProduct = () => {
     if (count > 1) {
       setCount(count - 1);
     }
+  };
+
+  const handleAddToCart = () => {
+    // Envía una acción de tipo 'ADD_ITEM' con el objeto del producto como carga útil
+    dispatch({ type: 'ADD_ITEM', item: product, quantity: count });
   };
 
   if (!product) {
@@ -31,21 +40,18 @@ export const PageProduct = () => {
 
   return (
     <>
-      <div className="py-40 flex flex-col h-auto justify-center items-center mx-52">
+      <div className="pt-36 flex flex-col h-auto justify-center items-center mx-52">
         <div className="flex h-96 p-2">
           <div className="w-1/2 mr-10">
             <img
               className="rounded h-full w-full"
               src={product.imageURL}
-              alt=""
             />
           </div>
           <div className="w-1/2 p-4 ml-10">
             <span className="text-orange-500 font-semibold">{product.brand}</span>
             <p className="text-3xl font-bold my-2">{product.name}</p>
             <p className="py-4 text-sm">{product.description}</p>
-
-            <p>Size {product.size}</p>
             {product.discount ? (
               <div className="flex flex-col">
                 <div className="flex gap-2">
@@ -54,11 +60,11 @@ export const PageProduct = () => {
                   </span>
                   <div className="flex items-start text-orange-500">
                     <span className="px-1 bg-orange-200 rounded font-bold">
-                      {product.discount}%
+                      -{product.discount}%
                     </span>
                   </div>
                 </div>
-                <div>
+                <div className='mt-1'>
                   <span className="opacity-50 line-through">${product.price}</span>
                 </div>
               </div>
@@ -81,7 +87,11 @@ export const PageProduct = () => {
                   <Plus size={18} />
                 </button>
               </div>
-              <button className="w-60 bg-orange-500 rounded text-white py-2 flex justify-center items-center gap-2 hover:text-slate-100 hover:bg-orange-400">
+              {/* Agrega un controlador de eventos onClick al botón "Agregar al carrito" */}
+              <button
+                className="w-60 bg-orange-500 rounded text-white py-2 flex justify-center items-center gap-2 hover:text-slate-100 hover:bg-orange-400"
+                onClick={handleAddToCart}
+              >
                 <ShoppingCart size={28} />
                 <span className="font-semibold">Add to Cart</span>
               </button>
@@ -89,6 +99,7 @@ export const PageProduct = () => {
           </div>
         </div>
       </div>
+   
     </>
   );
 };

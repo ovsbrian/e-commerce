@@ -8,9 +8,13 @@ import Home from "./pages/Home/Home";
 import { Footer } from "./layout/nav/Footer";
 import { Collections } from "./pages/Collection/Collections";
 import { PageProduct } from "./pages/PagesProducts/ProductPage";
+import { CartProvider } from "./pages/Cart/cartProvide";
+import { Cart } from "./pages/Cart/Cart";
 
 function App() {
   return (
+    <CartProvider>
+
     <BrowserRouter>
       <Nav />
       <Routes>
@@ -18,9 +22,11 @@ function App() {
         <Route path="collections" Component={Collections} />
         <Route path="men" Component={Men} />
         <Route path="/product/:id" element={<PageProduct />} />
+        <Route path="/cart" element={<Cart />} />
       </Routes>
       <Footer />
     </BrowserRouter>
+    </CartProvider>
   );
 }
 

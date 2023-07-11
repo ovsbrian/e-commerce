@@ -1,3 +1,4 @@
+import { ShoppingCart } from "lucide-react";
 import "./nav.css";
 export const Nav = () => {
   return (
@@ -25,6 +26,11 @@ export const Nav = () => {
             <a href="/contact">Contact</a>
           </li>
         </ul>
+        <div className="flex justify-center items-center mx-10 ">
+          <a href="/cart">
+            <ShoppingCart />
+          </a>
+        </div>
       </div>
     </>
   );
