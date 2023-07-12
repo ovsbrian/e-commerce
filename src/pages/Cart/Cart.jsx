@@ -2,12 +2,13 @@ import { useContext } from "react";
 import { CartContext } from "./ContextCart";
 import { capitalizeFirstLetter } from "../../utils/functions";
 import { Heart, Trash2 } from "lucide-react";
-
+import './cart.css'
+import { CartMenu } from "./CartMenu";
 export const Cart = () => {
   const { state, dispatch } = useContext(CartContext);
 
   return (
-    <div className="h-auto pt-32">
+    <div className="h-auto pt-32 flex">
       <div className="mx-20  w-2/4">
         <h2 className="text-xl font-semibold ml-3">Bolsa de compras</h2>
         <div className="flex flex-col gap-8 mt-8 w-full">
@@ -28,26 +29,36 @@ export const Cart = () => {
                   <span className="text">Talla {item.size}</span>
                   <span>Cantidad {item.quantity}</span>
                 </div>
-                <div className="flex gap-2">
-                    <button>
-                        <Heart size={20}/>
-                    </button>
+                <div className="flex gap-2 mt-4 mb-4">
+                  <button>
+                    <Heart className="heartIcon"  size={20} />
+                  </button>
                   <button
                     onClick={() =>
                       dispatch({ type: "REMOVE_ITEM", id: item.id })
                     }
                   >
-                    <Trash2 size={20} />
+                    <Trash2 className="delete" size={20} />
                   </button>
                 </div>
               </div>
-              <div className="pt-3">
-                <span className="text-lg font-semibold">${item.price}</span>
+              <div className="pt-3 flex gap-2">
+                {item.discount ? (
+                  <span className="text-lg line-through opacity-80">
+                    ${item.discount}
+                  </span>
+                ) : (
+                  ""
+                )}
+
+                <span className="text-lg font-semibold"> ${item.price}</span>
               </div>
             </div>
           ))}
         </div>
       </div>
+      <CartMenu/>
     </div>
+  
   );
 };

@@ -3,7 +3,6 @@ import { useParams } from 'react-router-dom';
 import { useProduct } from '../../utils/Hooks';
 import { Minus, Plus, ShoppingCart } from 'lucide-react';
 import { discountProduct } from '../../utils/functions';
- 
 import { CartContext } from '../Cart/ContextCart';
   // Importa el contexto del carrito de compras
 
@@ -87,7 +86,6 @@ export const PageProduct = () => {
                   <Plus size={18} />
                 </button>
               </div>
-              {/* Agrega un controlador de eventos onClick al botón "Agregar al carrito" */}
               <button
                 className="w-60 bg-orange-500 rounded text-white py-2 flex justify-center items-center gap-2 hover:text-slate-100 hover:bg-orange-400"
                 onClick={handleAddToCart}
