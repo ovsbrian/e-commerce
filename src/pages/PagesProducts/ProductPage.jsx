@@ -1,16 +1,16 @@
-import { useState, useContext } from 'react';
+import  { useState, useContext } from 'react';
 import { useParams } from 'react-router-dom';
 import { useProduct } from '../../utils/Hooks';
-import { Minus, Plus, ShoppingCart } from 'lucide-react';
+import { Minus, Plus } from 'lucide-react';
 import { discountProduct } from '../../utils/functions';
 import { CartContext } from '../Cart/ContextCart';
-  // Importa el contexto del carrito de compras
+import { CartButton } from './CartButton';
 
 export const PageProduct = () => {
   const { id } = useParams();
   const product = useProduct(id);
   const [count, setCount] = useState(1);
-  const { dispatch } = useContext(CartContext); // Utiliza el Hook useContext para acceder al contexto del carrito de compras
+  const { dispatch } = useContext(CartContext);
 
   const handleIncrement = () => {
     setCount(count + 1);
@@ -23,7 +23,6 @@ export const PageProduct = () => {
   };
 
   const handleAddToCart = () => {
-    // Envía una acción de tipo 'ADD_ITEM' con el objeto del producto como carga útil
     dispatch({ type: 'ADD_ITEM', item: product, quantity: count });
   };
 
@@ -38,7 +37,8 @@ export const PageProduct = () => {
   }
 
   return (
-    <>
+    // Agrega un <div> con position: relative alrededor del contenido de tu página
+    <div className='relative'>
       <div className="pt-36 flex flex-col h-auto justify-center items-center mx-52">
         <div className="flex h-96 p-2">
           <div className="w-1/2 mr-10">
@@ -86,18 +86,12 @@ export const PageProduct = () => {
                   <Plus size={18} />
                 </button>
               </div>
-              <button
-                className="w-60 bg-orange-500 rounded text-white py-2 flex justify-center items-center gap-2 hover:text-slate-100 hover:bg-orange-400"
-                onClick={handleAddToCart}
-              >
-                <ShoppingCart size={28} />
-                <span className="font-semibold">Add to Cart</span>
-              </button>
+              {/* Renderiza el componente CartButton aquí */}
+              <CartButton onAddToCart={handleAddToCart} />
             </div>
           </div>
         </div>
       </div>
-   
-    </>
+    </div>
   );
 };

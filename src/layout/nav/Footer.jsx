@@ -1,7 +1,7 @@
 export const Footer = () => {
   return (
     <>
-      <footer className="border-t-2 text-black p-6 mt-20">
+      <footer className="border-t-2 text-black p-6 mt-20  relative ">
         <div className="container mx-auto">
           <div className="flex flex-wrap">
             <div className="w-full md:w-1/3 mb-6 md:mb-0">
