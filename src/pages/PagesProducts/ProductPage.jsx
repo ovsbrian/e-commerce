@@ -5,10 +5,15 @@ import { Minus, Plus } from 'lucide-react';
 import { discountProduct } from '../../utils/functions';
 import { CartContext } from '../Cart/ContextCart';
 import { CartButton } from './CartButton';
+import { RelatedProducts } from './RelatedProducts';
 
 export const PageProduct = () => {
   const { id } = useParams();
+ 
+   
   const product = useProduct(id);
+ 
+
   const [count, setCount] = useState(1);
   const { dispatch } = useContext(CartContext);
 
@@ -91,6 +96,7 @@ export const PageProduct = () => {
             </div>
           </div>
         </div>
+        <RelatedProducts category={product.category} currentProductId={product.id} />
       </div>
     </div>
   );
