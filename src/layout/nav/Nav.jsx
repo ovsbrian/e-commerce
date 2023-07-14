@@ -1,6 +1,10 @@
 import { ShoppingCart } from "lucide-react";
 import "./nav.css";
+import { useContext } from "react";
+import { CartContext } from "../../pages/Cart/ContextCart";
 export const Nav = () => {
+  const { state } = useContext(CartContext);
+  const cartLength = state.cart.length;
   return (
     <>
       <div className="h-20 border-b-2 flex  fixed bg-white z-40 w-full  ">
@@ -26,11 +30,16 @@ export const Nav = () => {
             <a href="/contact">Contact</a>
           </li>
         </ul>
-        <div className="flex justify-center items-center mx-10 ">
-          <a href="/cart">
-            <ShoppingCart />
-          </a>
-        </div>
+        {cartLength > 0 && (
+          <div className="flex justify-center items-center mx-10 ">
+            <span className="bg-red-500 rounded-full text-white text-xs font-bold px-1 absolute top-1 right-16">
+              {cartLength > 9 ? "+9" : cartLength}
+            </span>
+            <a href="/cart">
+              <ShoppingCart />
+            </a>
+          </div>
+        )}
       </div>
     </>
   );

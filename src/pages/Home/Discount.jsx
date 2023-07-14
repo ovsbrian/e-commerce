@@ -38,6 +38,9 @@ export const ProductsDiscount = () => {
             );
             return (
               <SwiperSlide key={`${product.id}-${index}`}>
+                <a href={`/product/${product.id}` }>
+
+              
                 <div
                   className={`w-full flex justify-center items-center flex-col cursor-pointer `}
                 >
@@ -62,7 +65,9 @@ export const ProductsDiscount = () => {
                     </div>
                   </div>
                 </div>
+                </a>
               </SwiperSlide>
+              
             );
           })}
         </Swiper>

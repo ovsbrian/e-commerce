@@ -32,11 +32,11 @@ export const CartMenu = () => {
               <span>Total</span>
             </div>
             <div className="  ">
-              <span>${total}</span>
+              <span>${Math.floor(total)}</span>
             </div>
           </div>
-          <BtnCart color={"black"} colorText={"white"} pad={4}>
-            Pagar
+          <BtnCart color={"bg-black"} colorText={"white"} pad={4}>
+           Comprar
           </BtnCart>
           <BtnCart color={"gray-200"} colorText={"black"} pad={4}  >
             <img className=" w-20 " src={PayPalImg} alt="Descripción de la imagen" />
