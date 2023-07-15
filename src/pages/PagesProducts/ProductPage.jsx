@@ -1,18 +1,16 @@
-import  { useState, useContext } from 'react';
-import { useParams } from 'react-router-dom';
-import { useProduct } from '../../utils/Hooks';
-import { Minus, Plus } from 'lucide-react';
-import { discountProduct } from '../../utils/functions';
-import { CartContext } from '../Cart/ContextCart';
-import { CartButton } from './CartButton';
-import { RelatedProducts } from './RelatedProducts';
+import { useState, useContext } from "react";
+import { useParams } from "react-router-dom";
+import { useProduct } from "../../utils/Hooks";
+import { Minus, Plus } from "lucide-react";
+import { discountProduct } from "../../utils/functions";
+import { CartContext } from "../Cart/ContextCart";
+import { CartButton } from "./CartButton";
+import { RelatedProducts } from "./RelatedProducts";
 
 export const PageProduct = () => {
   const { id } = useParams();
- 
-   
+
   const product = useProduct(id);
- 
 
   const [count, setCount] = useState(1);
   const { dispatch } = useContext(CartContext);
@@ -28,14 +26,14 @@ export const PageProduct = () => {
   };
 
   const handleAddToCart = () => {
-    dispatch({ type: 'ADD_ITEM', item: product, quantity: count });
+    dispatch({ type: "ADD_ITEM", item: product, quantity: count });
   };
 
   if (!product) {
     return (
       <>
-        <div className="h-96 pt-40">
-          <span className="text-lg">{id}Cargando...</span>
+        <div className="h-96 pt-40 flex justify-center items-center">
+          <span className="loader"></span>
         </div>
       </>
     );
@@ -43,17 +41,16 @@ export const PageProduct = () => {
 
   return (
     // Agrega un <div> con position: relative alrededor del contenido de tu página
-    <div className='relative'>
+    <div className="relative">
       <div className="pt-36 flex flex-col h-auto justify-center items-center mx-52">
         <div className="flex h-96 p-2">
           <div className="w-1/2 mr-10">
-            <img
-              className="rounded h-full w-full"
-              src={product.imageURL}
-            />
+            <img className="rounded h-full w-full" src={product.imageURL} />
           </div>
           <div className="w-1/2 p-4 ml-10">
-            <span className="text-orange-500 font-semibold">{product.brand}</span>
+            <span className="text-orange-500 font-semibold">
+              {product.brand}
+            </span>
             <p className="text-3xl font-bold my-2">{product.name}</p>
             <p className="py-4 text-sm">{product.description}</p>
             {product.discount ? (
@@ -68,8 +65,10 @@ export const PageProduct = () => {
                     </span>
                   </div>
                 </div>
-                <div className='mt-1'>
-                  <span className="opacity-50 line-through">${product.price}</span>
+                <div className="mt-1">
+                  <span className="opacity-50 line-through">
+                    ${product.price}
+                  </span>
                 </div>
               </div>
             ) : (
@@ -96,7 +95,10 @@ export const PageProduct = () => {
             </div>
           </div>
         </div>
-        <RelatedProducts category={product.category} currentProductId={product.id} />
+        <RelatedProducts
+          category={product.category}
+          currentProductId={product.id}
+        />
       </div>
     </div>
   );
