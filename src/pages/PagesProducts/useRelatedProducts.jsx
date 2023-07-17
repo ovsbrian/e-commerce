@@ -3,7 +3,8 @@ import useYourProducts from "../../utils/Hooks";
  
 
 export const useRelatedProducts = (category, currentProductId) => {
-    
+   
+  
   const [relatedProducts, setRelatedProducts] = useState([]);
   const products = useYourProducts();
 
