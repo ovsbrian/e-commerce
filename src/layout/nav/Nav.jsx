@@ -24,9 +24,6 @@ export const Nav = () => {
             <a href="/women">Women</a>
           </li>
           <li className="link link-underline link-underline-black">
-            <a href="/about">About</a>
-          </li>
-          <li className="link link-underline link-underline-black">
             <a href="/contact">Contact</a>
           </li>
         </ul>

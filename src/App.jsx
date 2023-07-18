@@ -10,6 +10,8 @@ import { Collections } from "./pages/Collection/Collections";
 import { PageProduct } from "./pages/PagesProducts/ProductPage";
 import { CartProvider } from "./pages/Cart/cartProvide";
 import { Cart } from "./pages/Cart/Cart";
+import { Contact } from "./pages/Contact/Contact";
+ 
 
 function App() {
   return (
@@ -21,6 +23,7 @@ function App() {
         <Route path="/" Component={Home} />
         <Route path="collections" Component={Collections} />
         <Route path="men" Component={Men} />
+        <Route path="contact" Component={Contact} />
         <Route path="/product/:id" element={<PageProduct />} />
         <Route path="/cart" element={<Cart />} />
       </Routes>
