@@ -4,7 +4,7 @@ import useYourProducts from "../../utils/Hooks";
 
 // Función para obtener productos con descuento
 const getDiscountedProducts = (products) => {
-  let discountedProducts = products.filter((product) => product.discount && product.gender === 'MEN');
+  let discountedProducts = products.filter((product) => product.discount && product.gender === 'WOMEN');
   discountedProducts.sort((a, b) => b.discount - a.discount);
   return [...discountedProducts, ...discountedProducts];
 };
@@ -15,7 +15,7 @@ const getFinalPrice = (product) => {
 };
 
 // Componente
-export const ProductsDiscountForMen = () => {
+export const ProductsDiscountForWoman = () => {
   // Obtener productos y filtrar por descuento
   const products = useYourProducts();
   const viewArray = getDiscountedProducts(products);
@@ -25,7 +25,7 @@ export const ProductsDiscountForMen = () => {
 const settings = {
     dots: false,
     infinite: true,
-    speed: 900,
+    speed: 1200,
     slidesToShow: 1,
     slidesToScroll: 1,
     vertical: true,
@@ -39,11 +39,11 @@ const settings = {
   // Renderizar componente
   return (
     <>
-      <div className="select-none mb-10">
+      <div className="select-none ">
         <div className="flex items-center my-4 w-full justify-center">
-          <span className="text-4xl font-semibold">Bests Discount</span>
+          <span className="text-4xl font-semibold my-5">Bests Discount</span>
         </div>
-        <main className="max-h-screen overflow-y-scroll snap snap-y snap-mandatory mainSelect">
+        <main className=" overflow-y-scroll snap snap-y snap-mandatory mainSelect">
           <Slider {...settings}>
             {viewArray.map((product, index) => {
               const finalPrice = getFinalPrice(product);

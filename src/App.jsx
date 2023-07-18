@@ -12,6 +12,8 @@ import { CartProvider } from "./pages/Cart/cartProvide";
 import { Cart } from "./pages/Cart/Cart";
 import { Contact } from "./pages/Contact/Contact";
 import { Men } from "./pages/Men/Men";
+import { Women } from "./pages/Women/Women";
+ 
  
 
 function App() {
@@ -23,6 +25,7 @@ function App() {
         <Route path="/" Component={Home} />
         <Route path="collections" Component={Collections} />
         <Route path="men" Component={Men} />
+        <Route path="women" Component={Women} />
         <Route path="contact" Component={Contact} />
         <Route path="/product/:id" element={<PageProduct />} />
         <Route path="/cart" element={<Cart />} />
