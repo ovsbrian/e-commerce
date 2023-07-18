@@ -124,6 +124,7 @@ export const Collections = () => {
                     nombre={product.name}
                     precio={product.price}
                     img={product.imageURL}
+                    disc={product.discount}
                   />
                 ))}
               </>

@@ -1,14 +1,30 @@
+// Importaciones
 import useYourProducts from "../../utils/Hooks";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import "swiper/css/pagination";
 import "swiper/css/navigation";
 import { Navigation, Autoplay } from "swiper";
-export const ProductsDiscount = () => {
-  const products = useYourProducts();
+
+// Función para obtener productos con descuento
+const getDiscountedProducts = (products) => {
   let discountedProducts = products.filter((product) => product.discount);
   discountedProducts.sort((a, b) => b.discount - a.discount);
-  const viewArray = [...discountedProducts, ...discountedProducts];
+  return [...discountedProducts, ...discountedProducts];
+};
+
+// Función para calcular el precio final
+const getFinalPrice = (product) => {
+  return Math.floor(product.price - product.price * (product.discount / 100));
+};
+
+// Componente
+export const ProductsDiscount = () => {
+  // Obtener productos y filtrar por descuento
+  const products = useYourProducts();
+  const viewArray = getDiscountedProducts(products);
+
+  // Renderizar componente
   return (
     <>
       <div className=" select-none px-24 mb-10">
@@ -33,9 +49,7 @@ export const ProductsDiscount = () => {
           className="mySwiper"
         >
           {viewArray.map((product, index) => {
-            const finalPrice = Math.floor(
-              product.price - product.price * (product.discount / 100)
-            );
+            const finalPrice = getFinalPrice(product);
             return (
               <SwiperSlide key={`${product.id}-${index}`}>
                 <a href={`/product/${product.id}` }>
