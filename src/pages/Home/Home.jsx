@@ -7,9 +7,9 @@ export default function Home() {
   return (
     <>
       <ImgHome />
-      <div className="p-24 flex">
+     
         <Sections />
-      </div>
+    
       <ProductsDiscount />
       <Brand />
     </>

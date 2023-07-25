@@ -5,9 +5,9 @@ const img1 =
 export const Sections = () => {
   return (
     <>
-      <div className="w-full h-custom grid grid-rows-3 grid-flow-col gap-4">
+      <div className="flex w-full flex-col h-96  md:h-custom md:p-24 md:grid grid-rows-3 grid-flow-col gap-4   " >
         <div
-          className="row-span-3 col-span-2 bg-slate-600 bg-cover bg-center flex justify-center items-end relative overflow-hidden cursor-pointer"
+          className="  row-span-3 col-span-2 bg-slate-600 bg-cover bg-center flex justify-center items-end relative overflow-hidden cursor-pointer"
           style={{ backgroundImage: `url(${img1})` }}
         >
           <div

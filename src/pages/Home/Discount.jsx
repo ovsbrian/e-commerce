@@ -27,8 +27,8 @@ export const ProductsDiscount = () => {
   // Renderizar componente
   return (
     <>
-      <div className=" select-none px-24 mb-10">
-        <div className="flex items-center m-10">
+      <div className=" select-none md:px-24 mb-10">
+        <div className="flex p-2 items-center md:m-10">
           <span className="text-4xl font-semibold">Bests Discount</span>
         </div>
         <Swiper
@@ -53,10 +53,8 @@ export const ProductsDiscount = () => {
             return (
               <SwiperSlide key={`${product.id}-${index}`}>
                 <a href={`/product/${product.id}` }>
-
-              
                 <div
-                  className={`w-full flex justify-center items-center flex-col cursor-pointer `}
+                  className={`h-96 md:h-full w-full flex justify-center bg-black items-center   cursor-pointer `}
                 >
                   <div className="relative">
                     <img
@@ -64,17 +62,17 @@ export const ProductsDiscount = () => {
                       alt={product.name}
                       className="rounded-3xl"
                     />
-                    <span className="absolute top-5 left-5 bg-white rounded-full p-5 text-3xl font-semibold text-red-700">
+                    <span className="md:absolute top-5 left-5 bg-white rounded-full p-5 text-3xl font-semibold text-red-700">
                       % {product.discount}
                     </span>
-                    <div className="absolute top-2 right-5  rounded-sm p-5 text-3xl font-semibold text-red-700 flex flex-col items-center">
+                    <div className="md:absolute top-2 right-5  rounded-sm p-5 text-3xl font-semibold text-red-700 flex flex-col items-center">
                       <span className="text-xl line-through">
                         before: $ {product.price}
                       </span>
                       <span>NOW: $ {finalPrice}</span>
                     </div>
 
-                    <div className="absolute bottom-0 left-0 p-2 flex flex-col justify-center items-center w-full ">
+                    <div className="md:absolute bottom-0 left-0 p-2 flex flex-col justify-center items-center w-full ">
                       <h2 className="text-2xl font-semibold">{product.name}</h2>
                     </div>
                   </div>
