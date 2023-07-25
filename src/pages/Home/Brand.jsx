@@ -9,7 +9,7 @@ const vans =
 export const Brand = () => {
   return (
     <>
-      <div className="px-24  flex">
+      <div className="md:p-24 flex ">
         <div className="grid grid-cols-2 gap-4 row-span-3 p-4">
           <div className="  flex items-center overflow-hidden cursor-pointer">
             <img

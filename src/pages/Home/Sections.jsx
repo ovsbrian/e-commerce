@@ -5,9 +5,9 @@ const img1 =
 export const Sections = () => {
   return (
     <>
-      <div className="flex w-full flex-col h-96  md:h-custom md:p-24 md:grid grid-rows-3 grid-flow-col gap-4   " >
+      <div className="flex w-full flex-col h-custom md:p-24 md:grid grid-rows-3 grid-flow-col gap-4   " >
         <div
-          className="  row-span-3 col-span-2 bg-slate-600 bg-cover bg-center flex justify-center items-end relative overflow-hidden cursor-pointer"
+          className="flex-1  md:h-auto row-span-3 col-span-2 bg-slate-600 bg-cover bg-center flex justify-center items-end relative overflow-hidden cursor-pointer"
           style={{ backgroundImage: `url(${img1})` }}
         >
           <div
@@ -18,12 +18,12 @@ export const Sections = () => {
               backgroundPosition: "center",
             }}
           ></div>
-          <div className="mb-6 bg-slate-300 p-4 rounded-2xl z-10">
+          <div className="mb-2 bg-slate-300 p-4 rounded-2xl z-10">
             <span className="text-3xl font-semibold ">Running</span>
           </div>
         </div>
         <div
-          className="row-span-2 col-span-1 bg-slate-700 bg-cover bg-center flex justify-center items-end relative overflow-hidden cursor-pointer"
+          className="flex-1 md:h-auto row-span-2 col-span-1 bg-slate-700 bg-cover bg-center flex justify-center items-end relative overflow-hidden cursor-pointer"
           style={{ backgroundImage: `url(${img1})` }}
         >
           <div
@@ -34,12 +34,12 @@ export const Sections = () => {
               backgroundPosition: "center",
             }}
           ></div>
-          <div className="mb-6 bg-slate-300 p-4 rounded-2xl z-10">
+          <div className="mb-2 bg-slate-300 p-4 rounded-2xl z-10">
             <span className="text-3xl font-semibold ">FootBall</span>
           </div>
         </div>
         <div
-          className="col-span-1 bg-slate-700 bg-cover bg-center flex justify-center items-end relative overflow-hidden cursor-pointer"
+          className="flex-1 md:h-auto col-span-1 bg-slate-700 bg-cover bg-center flex justify-center items-end relative overflow-hidden cursor-pointer"
           style={{ backgroundImage: `url(${img1})` }}
         >
           <div
@@ -55,7 +55,7 @@ export const Sections = () => {
           </div>
         </div>
         <div
-          className="row-span-3 col-span-1 bg-slate-400 bg-cover bg-center flex justify-center items-end relative overflow-hidden cursor-pointer"
+          className="flex-1  md:h-auto row-span-3 col-span-1 bg-slate-400 bg-cover bg-center flex justify-center items-end relative overflow-hidden cursor-pointer"
           style={{ backgroundImage: `url(${img1})` }}
         >
           <div
@@ -66,9 +66,9 @@ export const Sections = () => {
               backgroundPosition: "center",
             }}
           ></div>
-          <div className="mb-6 bg-slate-300 p-4 rounded-xl z-10">
-            <span className="text-xl font-semibold ">Casual</span>
-          </div>
+          <div className="mb-2 bg-slate-300 p-4 rounded-xl z-10">
+            <span className="text-2xl font-semibold ">Casual</span>
+          </div> 
         </div>
       </div>
     </>

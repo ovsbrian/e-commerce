@@ -2,17 +2,19 @@ import { ShoppingBag } from "lucide-react";
 import "./nav.css";
 import { useContext } from "react";
 import { CartContext } from "../../pages/Cart/ContextCart";
+import { useWindowWidth } from "../../utils/functions";
  
 
 export const Nav = () => {
- 
-  
- 
-  
+  const width = useWindowWidth();
+  let iconSize = 30
+  if (width < 768) {
+    iconSize = 38;
+  } 
+
   const { state } = useContext(CartContext);
   const cartLength = state.cart.length;
  
-
   return (
     <>
       <div className="h-20 border-b-2 flex fixed bg-white z-40 w-full">
@@ -36,12 +38,12 @@ export const Nav = () => {
           </li>
         </ul>
         {cartLength > 0 && (
-          <div className="flex justify-center items-center mx-10">
-            <span className="bg-red-500 rounded-full text-white text-xs font-bold px-1 absolute mt-6 right-9">
+          <div className="flex justify-center items-center ml-36  md:mx-10">
+            <span className="bg-red-500 rounded-full text-white text-xs font-bold px-1 bottom-4 right-5 absolute md:mt-6 md:right-9">
               {cartLength > 9 ? "+9" : cartLength}
             </span>
             <a href="/cart">
-              <ShoppingBag />
+              <ShoppingBag size={iconSize}  />
             </a>
           </div>
         )}

@@ -10,12 +10,12 @@ export const Cart = () => {
 
   console.log(state);
   return (
-    <div className="h-auto pt-32 flex">
-      <div className="mx-20 w-2/4">
+    <div className="h-auto pt-32 flex flex-col md:flex-row justify-center  items-center md:justify-normal md:items-start">
+      <div className="md:mx-20 w-3/4 md:w-2/4">
         {state.cart.length > 0 ? (
           <>
             <h2 className="text-xl font-semibold ml-3">Bolsa de compras</h2>
-            <div className="flex flex-col gap-8 mt-8 w-full">
+            <div className="flex  flex-col gap-8 mt-8 w-full">
               {state.cart.map((item) => (
                 <div
                   key={item.id}
@@ -24,7 +24,7 @@ export const Cart = () => {
                   <div className="w-36">
                     <img src={item.imageURL} alt={item.name} className="p-4" />
                   </div>
-                  <div className="w-96 pt-3 mr-20">
+                  <div className="md:w-96 pt-3 md:mr-20">
                     <div className="flex flex-col text-sm">
                       <span className="font-semibold text-lg">{item.name}</span>
                       <span>{capitalizeFirstLetter(item.gender)}</span>
@@ -47,7 +47,7 @@ export const Cart = () => {
                       </button>
                     </div>
                   </div>
-                  <div className="pt-3 flex gap-2">
+                  <div className="pt-3 flex flexco gap-2">
                     {item.discount ? (
                       <>
                         <span className="text-lg line-through opacity-80">
@@ -75,8 +75,11 @@ export const Cart = () => {
           <div className="w-full flex justify-center flex-col items-center h-48">
             <h4>No hay productos en tu carrito!</h4>
             <div className="flex gap-1">
-            <p>Vea nuestros productos</p>
-            <a className="text-red-600" href="/collections"> aquí</a>
+              <p>Vea nuestros productos</p>
+              <a className="text-red-600" href="/collections">
+                {" "}
+                aquí
+              </a>
             </div>
           </div>
         )}

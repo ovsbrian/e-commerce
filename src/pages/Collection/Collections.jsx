@@ -92,11 +92,11 @@ export const Collections = () => {
 
   return (
     <>
-      <div className="pt-28 px-20">
+      <div className="pt-28 md:px-20">
         <DirectionOrder text="Collections" />
-        <div className="flex">
+        <div className="flex flex-col md:flex-row">
           <ContainerFilter onFilterChange={handleFilterChange} />
-          <div className="grid grid-cols-3 gap-6 w-full h-full">
+          <div className="md:grid md:grid-cols-3 md:gap-6 w-full h-full">
             {isLoading ? (
               <div className="flex justify-center items-center w-full col-span-3">
                 <span className="loader"></span>
@@ -107,7 +107,7 @@ export const Collections = () => {
               </div>
             ) : (
               <>
-                <div className="col-span-3 flex flex-wrap">
+                <div className="md:col-span-3 flex flex-wrap">
                   {appliedFilters.map((filter) => (
                     <FilterTag
                       key={filter.name}

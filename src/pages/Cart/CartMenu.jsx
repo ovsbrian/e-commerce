@@ -37,7 +37,7 @@ export const CartMenu = () => {
 
   return (
     <>
-      <div className="pt-3 w-72">
+      <div className="pt-3 w-72  ">
         <div className="h-full w-full p-2">
           <span className="text-2xl">Resumen</span>
           <div className="flex">

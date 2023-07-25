@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 export const DirectionOrder = (props) => {
   return (
     <>
-      <div className="flex gap-4 items-center">
+      <div className="flex gap-4 items-center ml-4">
         <span className="opacity-50">Home</span>
         <IconChevronRight className="opacity-50" size={20} />
         <span>{props.text}</span>

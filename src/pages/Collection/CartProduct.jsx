@@ -5,21 +5,14 @@ export const CartProduct = ({ img, nombre, precio, id, disc }) => {
   const MAX_WORDS = 4; // Cambia este valor según tus necesidades
 
   // Función para truncar el nombre
-  const truncateNombre = (nombre, maxWords) => {
-    const words = nombre.split(" ");
-    if (words.length > maxWords) {
-      return words.slice(0, maxWords).join(" ") + "...";
-    }
-    return nombre;
-  };
 
   const nombreTruncado = truncateNombre(nombre, MAX_WORDS);
 
   return (
     <>
-      <div className="w-80 h-80   my-4 transition-transform transform hover:scale-105 hover:cursor-pointer hover:z-20">
+      <div className="w-full mb-10 md:mb-auto md:w-80 md:h-80   my-4 transition-transform transform hover:scale-105 hover:cursor-pointer hover:z-20">
         <Link to={`/product/${id}`}>
-          <div className=" mb-4 p-2 w-full h-60 flex justify-center items-center">
+          <div className=" mb-4 p-2 w-full h-60 flex justify-center items-center sm:bg-slate-200">
             <img className="h-72" src={img} alt="IMAGEN" />
             {disc ? (
               <div className="absolute bg-orange-500 top-3 right-5 w-2/5 h-1/5 rounded flex justify-center items-center transform rotate-45">
@@ -30,9 +23,8 @@ export const CartProduct = ({ img, nombre, precio, id, disc }) => {
             )}
           </div>
           <div className=" p-2 mt-5 w-full h-20 flex flex-col ">
-            <span className="text-xl m-2">${precio}</span>
-
             <span className="opacity-60 mx-2">{nombreTruncado}</span>
+            <span className="text-xl m-2">${precio}</span>
           </div>
         </Link>
       </div>
@@ -41,6 +33,7 @@ export const CartProduct = ({ img, nombre, precio, id, disc }) => {
 };
 
 import PropTypes from "prop-types";
+import { truncateNombre } from "../../utils/functions";
 
 CartProduct.propTypes = {
   img: PropTypes.string.isRequired,

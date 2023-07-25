@@ -17,7 +17,7 @@ export const ImgHome = () => {
           <span className="text-4xl font-bold">{products[0].name}</span>
         </div>
 
-        <div className=" w-80 bg-slate-400 h-72 md:h-full">
+        <div className=" w-full md:w-80 bg-slate-400 h-80 md:h-full">
           <img className="h-full w-full" src={products[0].imageURL} alt="" />
         </div>
       </div>

@@ -55,7 +55,7 @@ export const ContainerFilter = ({ onFilterChange }) => {
 
   return (
     <>
-      <div className="p-4 w-56 rounded flex flex-col gap-4">
+      <div className=" p-4 w-56 rounded flex md:flex-col gap-4">
         {categories.map((category, index) => (
           <div key={index}>
             <Accordion
