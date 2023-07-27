@@ -41,14 +41,14 @@ export const PageProduct = () => {
 
   return (
     // Agrega un <div> con position: relative alrededor del contenido de tu página
-    <div className="relative">
-      <div className="pt-36 flex flex-col h-auto justify-center items-center mx-52">
-        <div className="flex h-96 p-2">
-          <div className="w-1/2 mr-10">
+    <div className="relative flex justify-center">
+      <div className="md:pt-36 flex flex-col h-auto justify-center items-center mx-52">
+        <div className="flex flex-col md:flex-row md:h-96 p-2 ">
+          <div className=" md:w-1/2 md:mr-10">
             <img className="rounded h-full w-full" src={product.imageURL} />
           </div>
-          <div className="w-1/2 p-4 ml-10">
-            <span className="text-orange-500 font-semibold">
+          <div className="md:w-1/2 p-2 mt-4 md:mt-0 md:p-4 md:ml-10">
+            <span className="text-orange-500 font-semibold  ">
               {product.brand}
             </span>
             <p className="text-3xl font-bold my-2">{product.name}</p>
@@ -95,10 +95,13 @@ export const PageProduct = () => {
             </div>
           </div>
         </div>
+        <div className="w-96 md:w-auto"> 
+
         <RelatedProducts
           category={product.category}
           currentProductId={product.id}
         />
+        </div>
       </div>
     </div>
   );

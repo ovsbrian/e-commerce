@@ -5,10 +5,10 @@ const Alert = ({ message, visible, onClose }) => {
   if (!visible) return null;
 
   return (
-    <div className="alert flex justify-center items-center gap-2 fixed top-24 left-1/2 transform -translate-x-1/2 p-4 bg-white rounded-md shadow shadow-orange-500">
+    <div className="alert flex flex-col md:flex-row justify-center items-center gap-2 fixed top-24 left-1/2 transform -translate-x-1/2 p-4 bg-white rounded-md shadow shadow-orange-500">
     <CheckCircle2 color="orange"/>
       {message}
-      <button className="ml-4 px-4 py rounded-md" onClick={onClose}> <X /></button>
+      <button className="md:ml-4 px-4 py rounded-md" onClick={onClose}> <X /></button>
     </div>
   );
 };

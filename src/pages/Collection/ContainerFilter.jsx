@@ -55,59 +55,59 @@ export const ContainerFilter = ({ onFilterChange }) => {
 
   return (
     <>
-      <div className=" p-4 w-56 rounded flex md:flex-col gap-4">
-        {categories.map((category, index) => (
-          <div key={index}>
-            <Accordion
-              open={isActive[index]}
-              icon={<Icon open={isActive[index]} />}
-            >
-              <AccordionHeader onClick={() => handleIsActive(index)}>
-                {category.name}
-              </AccordionHeader>
-              {isActive[index] && (
-                <AccordionBody>
-                  {category.content.map((option) => (
-                    <div className="text-base" key={option}>
-                      <List>
-                        <ListItem className="p-0" key={option}>
-                          <label
-                            className="flex items-center w-full cursor-pointer"
-                            onClick={() => handleSelectedFilter(category.name, option)}
-                          >
-                            <ListItemPrefix className="mr-3">
-                              <Radio
-                                name={`vertical-list-${category.name}`}
-                                id={`vertical-list-${category.name}-${option}`}
-                                ripple={false}
-                                className="hover:before:opacity-0"
-                                containerProps={{
-                                  className: "p-0",
-                                }}
-                                checked={
-                                  category.name === "Género"
-                                    ? selectedGender === option
-                                    : category.name === "Talles"
-                                    ? selectedSizeRange === option
-                                    : category.name === "Tipo"
-                                    ? selectedCategory === option
-                                    : false
-                                }
-                                onChange={() => {}}
-                              />
-                            </ListItemPrefix>
-                            <Typography variant="body2">{option}</Typography>
-                          </label>
-                        </ListItem>
-                      </List>
-                    </div>
-                  ))}
-                </AccordionBody>
-              )}
-            </Accordion>
-          </div>
-        ))}
-      </div>
+     <div className="p-4 w-56 rounded flex md:flex-col gap-4  ">
+  {categories.map((category, index) => (
+    <div className="" key={index}>
+      <Accordion open={isActive[index]} icon={<Icon open={isActive[index]} />}>
+        <AccordionHeader onClick={() => handleIsActive(index)}>
+          {category.name}
+        </AccordionHeader>
+        {isActive[index] && (
+          <AccordionBody className="  bg-white">
+            {category.content.map((option) => (
+              <div className="text-base" key={option}>
+                <List>
+                  <ListItem className="p-0" key={option}>
+                    <label
+                      className="flex items-center w-full cursor-pointer"
+                      onClick={() =>
+                        handleSelectedFilter(category.name, option)
+                      }
+                    >
+                      <ListItemPrefix className="mr-3">
+                        <Radio
+                          name={`vertical-list-${category.name}`}
+                          id={`vertical-list-${category.name}-${option}`}
+                          ripple={false}
+                          className="hover:before:opacity-0"
+                          containerProps={{
+                            className: "p-0",
+                          }}
+                          checked={
+                            category.name === "Género"
+                              ? selectedGender === option
+                              : category.name === "Talles"
+                              ? selectedSizeRange === option
+                              : category.name === "Tipo"
+                              ? selectedCategory === option
+                              : false
+                          }
+                          onChange={() => {}}
+                        />
+                      </ListItemPrefix>
+                      <Typography variant="body2">{option}</Typography>
+                    </label>
+                  </ListItem>
+                </List>
+              </div>
+            ))}
+          </AccordionBody>
+        )}
+      </Accordion>
+    </div>
+  ))}
+</div>
+
     </>
   );
 };
