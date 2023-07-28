@@ -8,7 +8,7 @@ import { CartMenu } from "./CartMenu";
 export const Cart = () => {
   const { state, dispatch } = useContext(CartContext);
 
-  console.log(state);
+ 
   return (
     <div className="h-auto pt-32 flex flex-col md:flex-row justify-center  items-center md:justify-normal md:items-start">
       <div className="md:mx-20 w-3/4 md:w-2/4">

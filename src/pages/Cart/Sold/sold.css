@@ -1,0 +1,16 @@
+.my-phone-input .PhoneInputCountryIcon {
+    width: 40px;
+    height: 40px;
+   display: flex;
+  }
+  .my-phone-input .PhoneInputCountrySelect{
+    width: 100px;
+    display: none;
+
+  }
+
+  .PhoneInputInput{
+    width: 190px;
+    padding-left: 2px;
+
+  }

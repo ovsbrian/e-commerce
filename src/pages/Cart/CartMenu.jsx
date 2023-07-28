@@ -1,8 +1,10 @@
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { BtnCart } from "./CartBtn";
 import PayPalImg from "./PayPal.png";
 import { CartContext } from "./ContextCart";
 import { Info } from "lucide-react";
+import { SoldModal } from "./Sold/ModalVenta/Sold";
+ 
 
 // Función para calcular los totales
 const calculateTotals = (cart) => {
@@ -29,7 +31,15 @@ const calculateTotals = (cart) => {
 
 export const CartMenu = () => {
   const { state, dispatch } = useContext(CartContext);
+  const [showModal, setShowModal] = useState(false);
 
+  const handleShowModal = () => {
+    setShowModal(true);
+  };
+
+  const handleCloseModal = () => {
+    setShowModal(false);
+  };
   // Llamada a la función calculateTotals para obtener los valores de los totales
   const { subtotal, shippingCost, taxes, total, taxRate } = calculateTotals(
     state.cart
@@ -46,6 +56,7 @@ export const CartMenu = () => {
               <span>Gastos de envío y gestión estimados</span>
               <div className="flex items-center">
                 <span>Impuestos estimados</span>
+            </div>
                 <div className="ml-2 relative group">
                   <Info
                     className="text-gray-400 hover:text-gray-600 cursor-pointer"
@@ -56,7 +67,6 @@ export const CartMenu = () => {
                   </div>
                 </div>
               </div>
-            </div>
             <div className="flex flex-col w-2/6 mt-6 items-end justify-between">
               <span>${subtotal.toFixed(2)}</span>
               <span>${shippingCost.toFixed(2)}</span>
@@ -71,10 +81,16 @@ export const CartMenu = () => {
               <span>${total.toFixed(2)}</span>
             </div>
           </div>
-          <BtnCart color={"bg-black"} colorText={"white"} pad={4}>
+          <BtnCart
+            color={"bg-black"}
+            colorText={"white"}
+            pad={"4"}
+            modal={handleShowModal}
+          >
             Comprar
           </BtnCart>
-          <BtnCart color={"bg-gray-200"} colorText={"black"} pad={4}>
+          {showModal && <SoldModal onClose={handleCloseModal} finalPrice={total} />}
+          <BtnCart color={"bg-gray-200"} colorText={"black"} pad={"4"}>
             <img
               className="w-20"
               src={PayPalImg}
