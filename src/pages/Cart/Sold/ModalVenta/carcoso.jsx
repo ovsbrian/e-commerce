@@ -1,7 +1,7 @@
 import Cleave from "cleave.js";
-import { useEffect } from "react";
 import { AmericanExpress, MasterCard, Visa } from "./CardsIcons";
- 
+import { useEffect } from "react";
+import PropTypes from 'prop-types';
 
 export const CardNumberInput = ({ cardType, setCardType }) => {
     useEffect(() => {
@@ -12,7 +12,7 @@ export const CardNumberInput = ({ cardType, setCardType }) => {
           setCardType(type);
         },
       });
-    }, []);
+    }, [setCardType]);
   
     return (
       <>
@@ -34,3 +34,7 @@ export const CardNumberInput = ({ cardType, setCardType }) => {
     );
   };
   
+  CardNumberInput.propTypes = {
+    cardType: PropTypes.string,
+    setCardType: PropTypes.func.isRequired
+  };

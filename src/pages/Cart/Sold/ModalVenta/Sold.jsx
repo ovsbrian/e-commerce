@@ -1,17 +1,26 @@
 import { XCircle } from "lucide-react";
-import { useState } from "react";
-import { InstallmentsSelect } from "./InstallmentsSelect";
-import { SecurityCodeInput } from "./SecurityCodeInput";
-import { CardNumberInput } from "./CardNumberInput";
-import { CardholderNameInput } from "./CardholderNameInput";
-import { ExpiryDateInput } from "./ExpiryDateInput";
-import { EmailInput } from "./EmailInput";
- 
-
- 
+import { useContext, useState } from "react";
+import PropTypes from 'prop-types';
+import { ProgressBar } from "./progressBar";
+import { SoldModa } from "./soldModal";
+import { ShippingInfo } from "./shippingInformation.jsx/shippingInformation";
+import { Alert } from "./AlertSold";
+import { CartContext } from "../../ContextCart";
 
 export const SoldModal = ({ onClose, finalPrice }) => {
-  const [cardType, setCardType] = useState(null);
+  const [step, setStep] = useState(1);
+  const [showAlert, setShowAlert] = useState(false);
+  const { dispatch } = useContext(CartContext);
+  const handleNextClick = (event) => {
+    event.preventDefault();
+
+    setStep((prevStep) => prevStep + 1);
+  };
+  const handleButtonClick = () => {
+    setShowAlert(true);
+    setTimeout(() => dispatch({ type: "CLEAR_CART" }), 1500);
+    setTimeout(() => onClose(), 1500);
+  };
 
   return (
     <div className="fixed top-0 left-0 w-full h-full flex justify-center items-center z-[60]">
@@ -22,39 +31,42 @@ export const SoldModal = ({ onClose, finalPrice }) => {
             <XCircle />
           </button>
         </div>
-        <span className="text-3xl my-2 font-semibold">
-          Datos de facturación
-        </span>
-
-        <form className="flex flex-col w-3/5 gap-2 my-6">
-          <CardholderNameInput />
-          <CardNumberInput cardType={cardType} setCardType={setCardType} />
-          <div className="flex gap-2">
-            <div className="flex flex-col w-full">
-              <ExpiryDateInput />
+        {step === 1 && (
+          <>
+            <span className="text-3xl my-2 font-semibold">
+              Datos de facturación
+            </span>
+            <ProgressBar step={step} />
+            <SoldModa finalPrice={finalPrice} />
+            <div className="flex justify-end rounded p-1">
+              <button
+                onClick={handleNextClick}
+                type="submit"
+                className="w-20 text-white font-semibold p-1 rounded bg-orange-700 my-4"
+              >
+                Next
+              </button>
             </div>
-            <div className="flex flex-col w-full">
-              <SecurityCodeInput cardType={cardType} />
+          </>
+        )}
+        {step === 2 && (
+          <>
+            <span className="text-3xl my-2 font-semibold">Datos de envio</span>
+            <ProgressBar step={step} />
+            <ShippingInfo />
+            <div className="flex justify-end rounded p-1">
+              <button onClick={handleButtonClick}>Mostrar alerta</button>
+              {showAlert && (
+                <Alert message="¡Gracias por confiar en nosotros!" />
+              )}
             </div>
-          </div>
-          <EmailInput />
-          <div className="flex flex-col justify-between">
-            <InstallmentsSelect/>
-            <div className="flex justify-between font-semibold">
-              <span>Total: </span>
-              <span>$ {finalPrice}</span>
-            </div>
-          </div>
-          <div className="flex justify-end rounded p-1">
-            <button
-              type="submit"
-              className="w-20 text-white font-semibold p-1 rounded bg-orange-700 my-4"
-            >
-              Next
-            </button>
-          </div>
-        </form>
+          </>
+        )}
       </div>
     </div>
   );
+};
+SoldModal.propTypes = {
+  onClose: PropTypes.func.isRequired,
+  finalPrice: PropTypes.number.isRequired
 };

@@ -18,9 +18,11 @@ export const BtnCart = ({ color , children, colorText, pad, modal }) => {
   );
 };
 
+ 
 BtnCart.propTypes = {
   color: PropTypes.string.isRequired,
   children: PropTypes.node.isRequired,
   colorText: PropTypes.string.isRequired,
   pad: PropTypes.string.isRequired,
-};
+  modal: PropTypes.func.isRequired
+}

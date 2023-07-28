@@ -3,8 +3,8 @@ import { BtnCart } from "./CartBtn";
 import PayPalImg from "./PayPal.png";
 import { CartContext } from "./ContextCart";
 import { Info } from "lucide-react";
-import { SoldModal } from "./Sold/ModalVenta/Sold";
  
+import {SoldModal} from './Sold/ModalVenta/Sold'
 
 // Función para calcular los totales
 const calculateTotals = (cart) => {

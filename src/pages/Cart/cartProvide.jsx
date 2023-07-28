@@ -1,5 +1,8 @@
 import { useEffect, useReducer } from "react";
 import { CartContext } from "./ContextCart";
+import PropTypes from 'prop-types';
+
+ 
 
 const CART_STATE_KEY = "cartState";
 const initialState = JSON.parse(localStorage.getItem(CART_STATE_KEY)) || {
@@ -10,7 +13,9 @@ function cartReducer(state, action) {
   switch (action.type) {
     case "ADD_ITEM":
       // Verifica si el producto ya está en el carrito
-      const itemIndex = state.cart.findIndex((item) => item.id === action.item.id);
+      const itemIndex = state.cart.findIndex(
+        (item) => item.id === action.item.id
+      );
       if (itemIndex !== -1) {
         // Si el producto ya está en el carrito, actualiza su cantidad
         return {
@@ -43,6 +48,11 @@ function cartReducer(state, action) {
           0
         ),
       };
+    case "CLEAR_CART":
+      return {
+        ...state,
+        cart: [],
+      };
     default:
       return state;
   }
@@ -62,3 +72,7 @@ export function CartProvider({ children }) {
     </CartContext.Provider>
   );
 }
+
+CartProvider.propTypes = {
+  children: PropTypes.node.isRequired
+};

@@ -7,7 +7,7 @@ import { useWindowWidth } from "../../utils/functions";
 
 export const Nav = () => {
   const width = useWindowWidth();
-  let iconSize = 30;
+  let iconSize = 34;
   if (width < 768) {
     iconSize = 38;
   }
@@ -97,7 +97,7 @@ export const Nav = () => {
 
         {cartLength > 0 && (
           <div className="flex justify-center items-center ml-24 md:mr-10">
-            <span className="bg-red-500 absolute px-1 rounded-full bottom-3 right-24 md:right-14">
+            <span className="bg-red-500 absolute px-2  rounded-full bottom-3 md:bottom-2 right-26 md:right-14">
               {cartLength > 9 ? "+9" : cartLength}
             </span>
             <a href="/cart">

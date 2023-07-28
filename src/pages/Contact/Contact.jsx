@@ -11,7 +11,7 @@ export const Contact = () => {
       },
       () => {
         // Centrar el mapa en una ubicación predeterminada si el usuario no da permiso
-        setPosition([34, 5, 56]);
+        setPosition([-34.9032800, -56.1881600])
       }
     );
   }, []);
