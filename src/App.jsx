@@ -11,14 +11,18 @@ import { Cart } from "./pages/Cart/Cart";
 import { Contact } from "./pages/Contact/Contact";
 import { Gender } from "./pages/PageGender/GenderPages";
 import { ErrorPage } from "./pages/Error/Error";
-
+import RegistrationForm from "./pages/Formularios/Register";
+import Login from "./pages/Formularios/Login";
+ 
 function App() {
   return (
     <CartProvider>
       <BrowserRouter>
-        <Nav />
+      {location.pathname !== '/' && <Nav />}
         <Routes>
-          <Route path="/" element={<Home />} />
+          <Route path="/register" element={<RegistrationForm/>} />
+          <Route path="/" element={<Login />} />
+          <Route path="/home" element={<Home />} />
           <Route path="collections" element={<Collections />} />
           <Route path="men" element={<Gender gender={"MEN"} />} />
           <Route path="women" element={<Gender gender={"WOMEN"} />} />
@@ -27,7 +31,7 @@ function App() {
           <Route path="/cart" element={<Cart />} />
           <Route path="*" element={<ErrorPage />} />
         </Routes>
-        <Footer />
+        {location.pathname !== '/' && <Footer />} 
       </BrowserRouter>
     </CartProvider>
   );
