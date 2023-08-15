@@ -10,7 +10,7 @@ import { CartProvider } from "./pages/Cart/cartProvide";
 import { Cart } from "./pages/Cart/Cart";
 import { Contact } from "./pages/Contact/Contact";
 import { Gender } from "./pages/PageGender/GenderPages";
- 
+import { ErrorPage } from "./pages/Error/Error";
 
 function App() {
   return (
@@ -25,6 +25,7 @@ function App() {
           <Route path="contact" element={<Contact />} />
           <Route path="/product/:id" element={<PageProduct />} />
           <Route path="/cart" element={<Cart />} />
+          <Route path="*" element={<ErrorPage />} />
         </Routes>
         <Footer />
       </BrowserRouter>
