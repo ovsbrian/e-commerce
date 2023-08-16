@@ -4,7 +4,8 @@ import "./nav.css";
 import { useContext } from "react";
 import { CartContext } from "../../pages/Cart/ContextCart";
 import { useWindowWidth } from "../../utils/functions";
-
+ 
+ 
 export const Nav = () => {
   const width = useWindowWidth();
   let iconSize = 34;
@@ -16,6 +17,8 @@ export const Nav = () => {
 
   const { state } = useContext(CartContext);
   const cartLength = state.cart.length;
+  
+ 
 
   return (
     <>
@@ -105,6 +108,7 @@ export const Nav = () => {
             </a>
           </div>
         )}
+    
       </div>
     </>
   );
