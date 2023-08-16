@@ -11,16 +11,18 @@ import { Cart } from "./pages/Cart/Cart";
 import { Contact } from "./pages/Contact/Contact";
 import { Gender } from "./pages/PageGender/GenderPages";
 import { ErrorPage } from "./pages/Error/Error";
-import RegistrationForm from "./pages/Formularios/Register";
+import { Register } from "./pages/Formularios/Register";
 import Login from "./pages/Formularios/Login";
  
 function App() {
+  const shouldShowNavAndFooter = location.pathname !== "/register" && location.pathname !== "/" && location.pathname !== "*";
   return (
     <CartProvider>
       <BrowserRouter>
-      {location.pathname !== '/' && <Nav />}
+      {shouldShowNavAndFooter && <Nav />}
+ 
         <Routes>
-          <Route path="/register" element={<RegistrationForm/>} />
+          <Route path="/register" element={<Register/>} />
           <Route path="/" element={<Login />} />
           <Route path="/home" element={<Home />} />
           <Route path="collections" element={<Collections />} />
@@ -31,7 +33,8 @@ function App() {
           <Route path="/cart" element={<Cart />} />
           <Route path="*" element={<ErrorPage />} />
         </Routes>
-        {location.pathname !== '/' && <Footer />} 
+        {shouldShowNavAndFooter && <Footer />}
+        
       </BrowserRouter>
     </CartProvider>
   );

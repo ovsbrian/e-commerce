@@ -1,60 +1,25 @@
-import { useState } from 'react';
-import { createClient } from '@supabase/supabase-js';
-import bcrypt from 'bcryptjs';
+import { RegistrationForm } from "./RegistrationForm";
 
-const supabase = createClient('https://wmmawvqjmhozkczcfjro.supabase.co', 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6IndtbWF3dnFqbWhvemtjemNmanJvIiwicm9sZSI6ImFub24iLCJpYXQiOjE2OTIxMjc5NjksImV4cCI6MjAwNzcwMzk2OX0.PIce2nJhEmRJ99wRSXs4o_J2hU_0Gn9QtX9P8pOnwI8');
-
-function RegistrationForm() {
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
-
-  const handleRegistration = async () => {
-    if (!email || !password) {
-      console.log('Please provide email and password');
-      return;
-    }
-
-    // Validar formato de correo electrónico
-    if (!/\S+@\S+\.\S+/.test(email)) {
-      console.log('Please provide a valid email address');
-      return;
-    }
-
-    // Generar hash de la contraseña
-    const hashedPassword = await bcrypt.hash(password, 10);
-
-    const { data, error } = await supabase.from('users').upsert([
-      {
-        email,
-        password: hashedPassword,
-      },
-    ]);
-
-    if (error) {
-      console.error('Error registering user:', error.message);
-    } else {
-      console.log('User registered successfully:', data);
-    }
-  };
-
+ 
+ 
+export const Register = () => {
+ 
   return (
-    <div className='pt-20'>
-      <h2>Registration Form</h2>
-      <input
-        type='email'
-        placeholder='Email'
-        value={email}
-        onChange={(e) => setEmail(e.target.value)}
-      />
-      <input
-        type='password'
-        placeholder='Password'
-        value={password}
-        onChange={(e) => setPassword(e.target.value)}
-      />
-      <button onClick={handleRegistration}>Register</button>
-    </div>
+    <>
+      <div className="w-full flex justify-center items-center relative">
+        <h2 className="absolute top-12 text-2xl font-bold">ovsbrian</h2>
+      </div>
+      <div className="flex flex-col justify-center items-center h-full ">
+        <div className="flex w-2/3 gap-4  flex-row-reverse justify-center ">
+          <div className="w-3/5">
+            <img src="/src/assets/Imgs/login.jpg" className="rounded" alt="" />
+          </div>
+          <div className="w-2/5">  
+            <RegistrationForm />
+          </div>
+        </div>
+      </div>
+    </>
   );
 }
-
-export default RegistrationForm;
+ 
