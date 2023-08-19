@@ -55,7 +55,7 @@ export const SoldModal = ({ onClose, finalPrice }) => {
             <ProgressBar step={step} />
             <ShippingInfo />
             <div className="flex justify-end rounded p-1">
-              <button onClick={handleButtonClick}>Mostrar alerta</button>
+              <button onClick={handleButtonClick}>Comprar</button>
               {showAlert && (
                 <Alert message="¡Gracias por confiar en nosotros!" />
               )}
