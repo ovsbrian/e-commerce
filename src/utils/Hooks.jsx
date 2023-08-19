@@ -4,7 +4,12 @@ export const useYourProducts = () => {
   const [products, setProducts] = useState([]);
 
   useEffect(() => {
-    fetch("../../data.json")
+    fetch("../../data.json", {
+      headers: {
+        'Content-Type': 'application/json',
+        'Accept': 'application/json'
+      }
+    })
       .then((response) => response.json())
       .then((data) => setProducts(data.products));
   }, []);
@@ -12,7 +17,7 @@ export const useYourProducts = () => {
   return products;
 };
 export default useYourProducts;
- 
+
 
 export const useProduct = (id) => {
   const [product, setProduct] = useState(null);
