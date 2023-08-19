@@ -1,4 +1,4 @@
-import "./imgHome.css";
+ 
 import useYourProducts from "../../utils/Hooks";
 export const ImgHome = () => {
   const products = useYourProducts();
