@@ -4,7 +4,7 @@ export const useYourProducts = () => {
   const [products, setProducts] = useState([]);
 
   useEffect(() => {
-    fetch("../../public/data.json")
+    fetch("../../data.json")
       .then((response) => response.json())
       .then((data) => setProducts(data.products));
   }, []);
@@ -20,7 +20,6 @@ export const useProduct = (id) => {
   
   useEffect(() => {
     const foundProduct = products.find((product) => product.id == id);
-    console.log('eto ' +foundProduct)
     setProduct(foundProduct);
   }, [id, products]);
   
