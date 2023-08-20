@@ -100,7 +100,7 @@ export const Nav = () => {
 
         {cartLength > 0 && (
           <div className="flex justify-center items-center ml-24 md:mr-10">
-            <span className="bg-red-500 absolute px-2  rounded-full bottom-3 md:bottom-2 right-26 md:right-14">
+            <span className="bg-red-500 absolute px-2  rounded-full bottom-3 md:bottom-2 right-16 md:right-14">
               {cartLength > 9 ? "+9" : cartLength}
             </span>
             <a href="/cart">
