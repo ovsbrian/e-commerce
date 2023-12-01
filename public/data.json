@@ -226,7 +226,7 @@
       "size": 44,
       "is_in_inventory": true,
       "items_left": 2,
-      "imageURL": "https://cdn.shopify.com/s/files/1/0016/0074/9623/products/Austin-Coffee_800x800.jpg?v=1574772988",
+      "imageURL": "https://hushpuppies.cr/cdn/shop/files/300739131.jpg?v=1692887993",
       "slug": "austin",
       "featured": 0,
       "description": "The Austin is a classic shoe that has been around for decades. It's made with leather and features an adjustable strap to help you find the perfect fit. This shoe is perfect for any occasion, whether it be work or play."
@@ -241,7 +241,7 @@
       "size": 30,
       "is_in_inventory": true,
       "items_left": 6,
-      "imageURL": "https://cdn.shopify.com/s/files/1/0016/0074/9623/products/009240000-11-SS-HL-0135-Black_800x800.jpg?v=1572264270",
+      "imageURL": "https://scontent.fmvd3-1.fna.fbcdn.net/v/t1.6435-9/80661628_10156916974297993_1283776573861789696_n.jpg?stp=dst-jpg_p843x403&_nc_cat=106&ccb=1-7&_nc_sid=7f8c78&_nc_ohc=t_ouAQlWYrQAX8y2Vl3&_nc_ht=scontent.fmvd3-1.fna&oh=00_AfAshS7H3N6wjbmwfS_XByeyLUnIpFi4f4rEQDgAJ9q4IQ&oe=65917619",
       "slug": "ss-hl-0135",
       "featured": 0,
       "description": "The SS-HL-0135 is a classic shoe that has been around for decades. It's made with leather and features an adjustable strap to help you find the perfect fit. This shoe is perfect for any occasion, whether it be work or play."
@@ -256,7 +256,7 @@
       "size": 36,
       "is_in_inventory": true,
       "items_left": 4,
-      "imageURL": "https://cdn.shopify.com/s/files/1/0016/0074/9623/products/009250000-779-SS-HL-0136-Coffee_800x800.jpg?v=1571900372",
+      "imageURL": "https://d2z0lqci37nukm.cloudfront.net/media/catalog/product/cache/5a319794f6868ce12b948b8c65d98dde/0/0/009590465-567203_c1kgvn2yh3bpfo69.jpg",
       "slug": "ss-hl-0136",
       "featured": 0,
       "description": "The SS-HL-0136 is a classic shoe that has been around for decades. It's made with leather and features an adjustable strap to help you find the perfect fit. This shoe is perfect for any occasion, whether it be work or play."
@@ -271,7 +271,7 @@
       "size": 34,
       "is_in_inventory": true,
       "items_left": 3,
-      "imageURL": "https://cdn.shopify.com/s/files/1/0016/0074/9623/products/000300242-484-SS-HL-0128-Blue_800x800.jpg?v=1583235174",
+      "imageURL": "https://d2z0lqci37nukm.cloudfront.net/media/catalog/product/cache/5a319794f6868ce12b948b8c65d98dde/0/0/009590437-999203_qs0mwvmgnmjg5haz.jpg",
       "slug": "ss-hl-0128",
       "featured": 0,
       "description": "The SS-HL-0128 is a classic shoe that has been around for decades. It's made with leather and features an adjustable strap to help you find the perfect fit. This shoe is perfect for any occasion, whether it be work or play."
@@ -286,27 +286,12 @@
       "size": 34,
       "is_in_inventory": true,
       "items_left": 7,
-      "imageURL": "https://cdn.shopify.com/s/files/1/0016/0074/9623/products/009170000-479-SS-MS-0075-Red_800x800.jpg?v=1570688687",
+      "imageURL": "https://www.hushpuppies.com.pk/cdn/shop/products/IMG_6733.jpg?v=1637909890",
       "slug": "ss-ms-0075",
       "featured": 0,
       "description": "The SS-MS-0075 is a classic shoe that has been around for decades. It's made with leather and features an adjustable strap to help you find the perfect fit. This shoe is perfect for any occasion, whether it be work or play."
     },
-    {
-      "id": 20,
-      "name": "SS-PM-0093",
-      "brand": "HUSHPUPPIES",
-      "gender": "WOMEN",
-      "category": "CASUAL",
-      "price": 30,
-      "size": 32,
-      "is_in_inventory": true,
-      "items_left": 3,
-      "imageURL": "https://cdn.shopify.com/s/files/1/0016/0074/9623/products/SS-PM-0093_1_800x800.jpg?v=1570601253",
-      "slug": "ss-pm-0093",
-      
-      "featured": 0,
-      "description": "The SS-PM-0093 is a classic shoe that has been around for decades. It's made with leather and features an adjustable strap to help you find the perfect fit. This shoe is perfect for any occasion, whether it be work or play."
-    },
+ 
     {
       "id": 21,
       "name": "Nizza X Disney",
